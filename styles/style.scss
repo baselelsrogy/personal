@@ -43,10 +43,11 @@ body {
   gap: var(--default-padding);
   background: url('../assets/pattern1.jpg') var(--color-very-dark-blue);
   background-size: contain;
-  min-height: 100vh;
   background-blend-mode: difference;
+  min-height: 100vh;
   align-content: center;
   justify-content: center;
+  padding-bottom: var(--default-padding);
   &::before {
     content: '';
     position: absolute;
@@ -57,6 +58,8 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-dark-blue);
   border-radius: var(--default-redius);
   overflow: hidden;
@@ -92,6 +95,7 @@ body {
   flex-direction: column;
   gap: 1rem;
   padding: var(--default-padding);
+  margin: auto 0;
 }
 
 .row {
