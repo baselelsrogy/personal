@@ -1,3 +1,5 @@
+@import './mixins';
+
 :root {
   --color-very-dark-blue: #0f1424;
   --color-dark-blue: #1c1f4a;
@@ -48,9 +50,19 @@ body {
   align-content: center;
   justify-content: center;
   padding-bottom: var(--default-padding);
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+
   &::before {
     content: '';
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(0.2rem);
@@ -65,14 +77,38 @@ body {
   overflow: hidden;
   &:not(:first-child) {
     padding: var(--default-padding);
+
+    @include mobile-tablet {
+      margin: 0 var(--default-padding);
+    }
   }
 
   &:nth-child(1) {
     grid-row: span 2;
+
+    @include tablet {
+      grid-column: span 2;
+      flex-direction: row;
+    }
+
+    @include mobile-tablet {
+      border-radius: 0;
+    }
   }
   & .top {
     background-color: var(--color-desaturated);
     padding: var(--default-padding);
+
+    @include mobile-tablet {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    @include mobile {
+      justify-content: center;
+    }
   }
   z-index: 1;
 }
@@ -96,6 +132,15 @@ body {
   gap: 1rem;
   padding: var(--default-padding);
   margin: auto 0;
+
+  @include tablet {
+    flex: 1;
+  }
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .row {
